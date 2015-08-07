@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="jp" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="public/js/lib/angular.min.js"></script>
+    <script src="public/js/lib/ui-bootstrap-tpls-0.13.2.min.js"></script>
+</head>
+<body ng-controller="TestController">
+    <div>
+        <h3>ng-model</h3>
+        <ul>
+            <li>{{data.a}}</li>
+            <li>{{data.b}}</li>
+            <li>{{data.c}}</li>
+        </ul>
+    </div>
+    <div>
+        <h3>ng-repeat</h3>
+        <ul>
+            <li ng-repeat="item in items">{{item}}</li>
+        </ul>
+    </div>
+    <div>
+        <h3>data binding text</h3><br>
+        <input type="text" ng-model="name"><br>
+        <span>{{name}}</span><br>
+        <textarea name="textarea" id="" cols="30" rows="10" ng-model="textarea"></textarea><br>
+        <span>{{textarea}}</span>
+    </div>
+    <div>
+        <h3>checkbox</h3><br>
+        <input type="checkbox" ng-model="checkbox1"><br>
+        <input type="checkbox" ng-model="checkbox2"><br>
+        <span>{{checkbox1}}</span><br/>
+        <span>{{checkbox2}}</span><br/>
+    </div>
+    <div>
+        <h3>radio</h3>
+        <input type="radio" ng-model="radio" value="red">
+        <input type="radio" ng-model="radio" value="blue">
+        <input type="radio" ng-model="radio" value="green">
+        <br><span>{{radio}}</span>
+    </div>
+    <div>
+        <h3>select box</h3>
+        <select ng-model="selectedYear" ng-options="year for year in years"></select>
+        <br><span>{{selectedYear}}</span>
+    </div>
+</body>
+</html>
+
+<script>
+angular.module('myApp', [])
+    .controller('TestController', ['$scope','$http', function($scope,$http) {
+        $scope.data = {
+            a: '1',
+            b: '2',
+            c: '3'
+        }
+        $scope.items = {
+            a: '1x',
+            b: '2x',
+            c: '3x'
+        }
+        $scope.textarea = "textarea1";
+        $scope.name = "test";
+        $scope.checkbox1 = true;
+        $scope.checkbox2 = false;
+        $scope.radio = "red";
+        $scope.years = [2010,2011,2012,2013,2014];
+        $scope.selectedYear = 2014;
+}]);
+</script>
